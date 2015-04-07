@@ -666,6 +666,15 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">sessionid</stringProp>
+              <stringProp name="RegexExtractor.regex">%28(.+?)%29</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
           </hashTree>
           <HTTPSampler guiclass="HttpTestSampleGui" testclass="HTTPSampler" testname="/teamengine/test" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -1123,7 +1132,7 @@
                 <elementProp name="session" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">session</stringProp>
-                  <stringProp name="Argument.value">s0178</stringProp>
+                  <stringProp name="Argument.value">${sessionid}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -1191,7 +1200,7 @@
                 <elementProp name="session" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">session</stringProp>
-                  <stringProp name="Argument.value">s0178</stringProp>
+                  <stringProp name="Argument.value">${sessionid}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
