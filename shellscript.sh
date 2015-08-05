@@ -1,5 +1,19 @@
 #!/bin/sh
 dir=$(pwd)
+
+printHelp(){
+echo "---------"
+echo "-f		:	path of jmeter script"
+echo "-u		:	path of URL(Not Work)"
+echo "-user		:	User name"
+echo "-password	:	User password"
+echo "---------"
+exit 0
+}
+if [ "$1" = "-h" -o "$1" = "--help" ]; then
+printHelp
+fi 
+
 while [ "$1" ]; do
   key="$1"
 
@@ -29,13 +43,12 @@ if [ ! $folder_of_jmeter ];
 then
 folder_of_jmeter=$dir
 fi 
-echo $folder_of_jmeter 
 rm index.html
 directory=`ls -F1 ${folder_of_jmeter} | grep /`
 for var in $directory
 do
 rm $folder_of_jmeter/${var}savedata
-jmeter -n -t $folder_of_jmeter/${var}CSW2_0_2.jmx -Juser=$user -Jpassword=$password
+jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password
 emails=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="checkResult" rc="\K.*?(?=")')
 testName=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'tn="\K.*?(?=")')
 echo "<b>Test Name :</b> " >> index.html
