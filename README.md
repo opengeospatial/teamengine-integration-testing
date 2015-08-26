@@ -10,6 +10,6 @@ Code and instructions to test teamengine on the web, integrating some ETS and sa
 
 
 * **EXAMPLE**<br/>
-1. sh ./shellscript.sh  -user username -password paswordOfUser -f pathOfAllJmetersFile
+1. sh ./shellscript.sh  -user username -password paswordOfUser -f pathOfAllJmetersFile -u pathOfTeamengineURL
 
 * file.csv : This file contains the xml file path which user wish to test.<br/>
