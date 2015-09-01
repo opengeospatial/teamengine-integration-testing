@@ -4,7 +4,7 @@ dir=$(pwd)
 printHelp(){
 echo "---------"
 echo "-f		:	path of jmeter script"
-echo "-u		:	path of URL(Not Work)"
+echo "-u		:	path of URL"
 echo "-user		:	User name"
 echo "-password	:	User password"
 echo "---------"
