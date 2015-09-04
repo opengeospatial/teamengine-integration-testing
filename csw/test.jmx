@@ -1729,6 +1729,7 @@
               <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
               <assertionsResultsToSave>0</assertionsResultsToSave>
               <bytes>true</bytes>
+              <url>true</url>
               <threadCounts>true</threadCounts>
             </value>
           </objProp>

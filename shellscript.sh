@@ -55,29 +55,34 @@ host=$2
 warName=/$3/
 rm index.html
 rm savedata
+rm -rf result
 directory=`ls -F1 ${folder_of_jmeter} | grep /`
 now=$(date +"%Y/%m/%d  %H:%M:%S")
-echo "<b>TE integration testing - </b>$now<BR/>" >> index.html
+echo "<b>TE integration testing - </b>$now" >> index1.html
+echo "<BR/><b>URL :</b> $url<BR/>" >> index1.html
 jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jwarname=$warName -Jurl=$server://$host/$warName/
 teVersion=$(cat -n $folder_of_jmeter/savedata | grep "&lt;p&gt;" | tail -2)
 teVersion=${teVersion#*&gt;}
 teVersion=${teVersion%&lt;\/p*}
-echo "<BR/><b>TE version :</b> $teVersion" >> index.html
+finalresult="PASS"
+echo "<BR/><b>TE version :</b> $teVersion" >> index1.html
 teBuild=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="teamenginetestResult" rc="\K.*?(?=")')
 teRegister=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="registrationTest" rc="\K.*?(?=")')
-echo "<BR/><b>Default build  :</b> " >> index.html
+echo "<BR/><b>Default build  :</b> " >> index1.html
 if echo $teBuild | grep -q "200";
 then 
-echo "SUCCESS">> index.html
+echo "SUCCESS">> index1.html
 else
-echo "FAILED">> index.html
+echo "FAILED">> index1.html
+finalresult="FAIL"
 fi
-echo "<BR/><b>User can be created and logins   :</b> " >> index.html
+echo "<BR/><b>User can be created and logins   :</b> " >> index1.html
 if echo $teRegister | grep -q "200";
 then 
-echo "SUCCESS<BR/>">> index.html
+echo "SUCCESS<BR/>">> index1.html
 else
-echo "FAILED<BR/>">> index.html
+echo "FAILED<BR/>">> index1.html
+finalresult="FAIL"
 fi
 for var in $directory
 do
@@ -86,21 +91,40 @@ jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password 
 result=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="checkResult" rc="\K.*?(?=")')
 formResult=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="formResult" rc="\K.*?(?=")')
 testName=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'tn="\K.*?(?=")')
-echo "<BR/><b>Test Name :</b> " >> index.html
-echo $testName | { read first rest ; echo $first ; } >> index.html
-echo "<BR/><b>Test can be run  :</b> " >> index.html
+echo "<BR/><b>Test Name :</b> " >> index1.html
+echo $testName | { read first rest ; echo $first ; } | cut -c1-3 >> index1.html
+string=$(xmllint --xpath "//testResults/httpSample[@lb='formResult']/java.net.URL" $folder_of_jmeter/${var}savedata )
+var=$(echo $string | awk -F"&amp;" '{print $1,$2,$3}')
+set -- $var
+var1=$(echo $3 | awk -F"_" '{print $1,$2,$3,$4}')
+set -- $var1
+echo " $3 revision $4" >> index1.html
+echo "<BR/><b>Test can be run  :</b> " >> index1.html
 if echo $formResult | grep -q "200";
 then 
-echo "SUCCESS">> index.html
+echo "SUCCESS">> index1.html
 else
-echo "FAILED">> index.html
+echo "FAILED">> index1.html
+finalresult="FAIL"
 fi
-echo "<BR/><b>Test run finishes successfully  :</b> " >> index.html
+echo "<BR/><b>Test run finishes successfully  :</b> " >> index1.html
 if echo $result | grep -q "200";
 then 
-echo "SUCCESS<BR/>">> index.html
+echo "SUCCESS<BR/>">> index1.html
 else
-echo "FAILED<BR/>">> index.html
+echo "FAILED<BR/>">> index1.html
+finalresult="FAIL"
 fi
 done
-
+mkdir result
+if echo $finalresult | grep -q "PASS";
+then
+echo "<b>Final Result :</b> SUCCESS<BR/><BR/>" >> index.html
+echo -n "" > result/SUCCESS
+else
+echo "<b>Final Result :</b> FAILED<BR/><BR/>" >> index.html
+echo -n "" > result/FAIL
+fi
+index1=$(cat index1.html)
+echo $index1 >> index.html
+rm index1.html

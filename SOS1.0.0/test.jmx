@@ -1859,6 +1859,7 @@
               <responseDataOnError>false</responseDataOnError>
               <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
               <assertionsResultsToSave>0</assertionsResultsToSave>
+              <url>true</url>
               <threadCounts>true</threadCounts>
             </value>
           </objProp>
