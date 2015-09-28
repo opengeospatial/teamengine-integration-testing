@@ -16,6 +16,18 @@ user.csv : This file user's login credential info.
 **Note:** 1. Set the file path of "user.csv" inside "userLoginData" config file.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Set the file path of "filePath.csv" inside "filePathData" config file. 
 
+
 ## Target platforms
 
-?
+### GNU/Linux
+
+* __OS__: ?
+* __JDK__: Oracle JDK 7u79?
+* __JEE container__: Apache Tomcat 7.0.?
+
+
+### Windows
+
+* __OS__: ?
+* __JDK__: Oracle JDK 7u79?
+* __JEE container__: Apache Tomcat 7.0.?
