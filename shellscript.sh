@@ -48,11 +48,20 @@ then
 url="http://cite.opengeospatial.org/te2/"
 fi
 i=0
+port=""
 testurl=$(echo $url | tr "/" "\n")
 set -- $testurl
 server=$(echo $1 | tr ":" "\n")
-host=$2
 warName=/$3/
+if echo $2 | grep -q ":";
+then
+urlid=$(echo $2 | tr ":" "\n")
+set -- $urlid
+host=$1
+port=$2
+else
+host=$2
+fi
 rm index.html
 rm savedata
 rm -rf result
@@ -60,7 +69,7 @@ directory=`ls -F1 ${folder_of_jmeter} | grep /`
 now=$(date +"%Y/%m/%d  %H:%M:%S")
 echo "<b>TE integration testing - </b>$now" >> index1.html
 echo "<BR/><b>URL :</b> $url<BR/>" >> index1.html
-jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jwarname=$warName -Jurl=$server://$host/$warName/
+jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
 teVersion=$(cat -n $folder_of_jmeter/savedata | grep "&lt;p&gt;" | tail -2)
 teVersion=${teVersion#*&gt;}
 teVersion=${teVersion%&lt;\/p*}
@@ -87,7 +96,7 @@ fi
 for var in $directory
 do
 rm $folder_of_jmeter/${var}savedata
-jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jwarname=$warName -Jurl=$server://$host/$warName/
+jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
 result=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="checkResult" rc="\K.*?(?=")')
 formResult=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="formResult" rc="\K.*?(?=")')
 testName=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'tn="\K.*?(?=")')

@@ -47,7 +47,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -89,7 +89,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -150,7 +150,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -201,7 +201,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -248,7 +248,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -351,7 +351,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -444,7 +444,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -507,7 +507,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -575,7 +575,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -643,7 +643,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -711,7 +711,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -779,7 +779,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -847,7 +847,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -915,7 +915,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -983,7 +983,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1044,7 +1044,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1090,7 +1090,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1136,7 +1136,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1182,7 +1182,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1228,7 +1228,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1274,7 +1274,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1320,7 +1320,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1366,7 +1366,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1412,7 +1412,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1458,7 +1458,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1504,7 +1504,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1566,7 +1566,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1612,7 +1612,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
@@ -1659,7 +1659,7 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${__P(host,cite.opengeospatial.org)}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.port">${__P(port,)}</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
