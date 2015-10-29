@@ -7,7 +7,6 @@ Code and instructions to test teamengine on the web, integrating some ETS and sa
 - CAT 3.0
 - GML 3.2.1
 - SOS 1.0.0
-- WCS 1.0
 - WCS 2.0
 - WFS 2.0
 - WMS 1.3
