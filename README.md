@@ -8,11 +8,12 @@ Code and instructions to test teamengine on the web, integrating some ETS and sa
 - GML 3.2.1
 - SOS 1.0.0
 - WCS 2.0
-- WFS 2.0
-- WMS 1.3
-- WFS 1.1
 - WFS 1.0
-- 
+- WFS 1.1
+- WFS 2.0
+- WMS 1.1.1
+- WMS 1.3
+
 Reference Implementations here:
 https://github.com/opengeospatial/cite/wiki/Reference-Implementations
 
