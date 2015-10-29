@@ -1,6 +1,23 @@
 # teamengine-integration-testing
 Code and instructions to test teamengine on the web, integrating some ETS and sample files <br/>
 
+# Test Suites that can be tested
+
+- CSW 2.0.2
+- CAT 3.0
+- GML 3.2.1
+- SOS 1.0.0
+- WCS 1.0
+- WCS 2.0
+- WFS 2.0
+- WMS 1.3
+- WFS 1.1
+- WFS 1.0
+- 
+Reference Implementations here:
+https://github.com/opengeospatial/cite/wiki/Reference-Implementations
+
+
 * **Specified Key**<br/>
 
  - -f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:	path of jmeter script<br/>
