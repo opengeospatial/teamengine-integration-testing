@@ -95,6 +95,7 @@ finalresult="FAIL"
 fi
 for var in $directory
 do
+if [ "$var" != "REST_API/" ]; then
 rm $folder_of_jmeter/${var}savedata
 jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
 result=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="checkResult" rc="\K.*?(?=")')
@@ -124,7 +125,36 @@ else
 echo "FAILED<BR/>">> index1.html
 finalresult="FAIL"
 fi
+fi
 done
+#----------REST API Testing -----------------------
+echo "<BR />--------------- REST API Testing ----------- <BR />" >> index1.html
+
+rest_directory=`ls -F1 ${folder_of_jmeter}/REST_API | grep /`
+for rest_var in $rest_directory
+do
+rm $folder_of_jmeter/REST_API/${rest_var}savedata
+jmeter -n -t $folder_of_jmeter/REST_API/${rest_var}test.jmx -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName
+
+rest_result=$(cat $folder_of_jmeter/REST_API/${rest_var}savedata | grep -Po 'lb="HTTP_Request" rc="\K.*?(?=")')
+rest_test=$(cat -n $folder_of_jmeter/REST_API/${rest_var}savedata | grep "&lt;suite duration-ms" | tail -2)
+echo $rest_test >> temp
+rest_testname=$(cat temp | grep -Po 'name=&quot;\K.*?(?=&quot;)')
+rm temp
+echo "<BR/><b>REST Test Name :</b> $rest_testname" >> index1.html
+
+echo "<BR/><b>REST Test run finishes successfully  :</b> " >> index1.html
+if echo $rest_result | grep -q "200";
+then 
+echo "SUCCESS<BR/>">> index1.html
+else
+echo "FAILED<BR/>">> index1.html
+finalresult="FAIL"
+fi
+done
+
+
+#--------------------------------------------------
 mkdir result
 if echo $finalresult | grep -q "PASS";
 then
