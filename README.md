@@ -29,7 +29,7 @@ https://github.com/opengeospatial/cite/wiki/Reference-Implementations
 * **EXAMPLE**<br/>
 1. sh ./shellscript.sh  -user username -password paswordOfUser -f pathOfAllJmetersFile -u pathOfTeamengineURL
 
-* file.csv : This file contains the xml file path which user wish to test.<br/>
+* file.csv : This file contains the xml or sch file path and revision number which user wish to test.<br/>
 
 
 ## Target platforms
