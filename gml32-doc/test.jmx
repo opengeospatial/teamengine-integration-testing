@@ -1140,8 +1140,8 @@
             <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
             <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
               <collectionProp name="HTTPFileArgs.files">
-                <elementProp name="${path}" elementType="HTTPFileArg">
-                  <stringProp name="File.path">${path}</stringProp>
+                <elementProp name="${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${resourc_name}" elementType="HTTPFileArg">
+                  <stringProp name="File.path">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${resourc_name}</stringProp>
                   <stringProp name="File.paramname">gml-doc</stringProp>
                   <stringProp name="File.mimetype">text/xml</stringProp>
                 </elementProp>
@@ -1556,7 +1556,7 @@
           <boolProp name="recycle">true</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
           <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">path,revision</stringProp>
+          <stringProp name="variableNames">resourc_name,revision</stringProp>
         </CSVDataSet>
         <hashTree/>
       </hashTree>

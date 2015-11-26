@@ -54,13 +54,13 @@
           <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
           <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
             <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="${iut_url}" elementType="HTTPFileArg">
-                <stringProp name="File.path">${iut_url}</stringProp>
+              <elementProp name="${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${iut_file_name}" elementType="HTTPFileArg">
+                <stringProp name="File.path">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${iut_file_name}</stringProp>
                 <stringProp name="File.paramname">iut</stringProp>
                 <stringProp name="File.mimetype">text/xml</stringProp>
               </elementProp>
-              <elementProp name="${sch_url}" elementType="HTTPFileArg">
-                <stringProp name="File.path">${sch_url}</stringProp>
+              <elementProp name="${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${sch_file_name}" elementType="HTTPFileArg">
+                <stringProp name="File.path">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${sch_file_name}</stringProp>
                 <stringProp name="File.paramname">sch</stringProp>
                 <stringProp name="File.mimetype">text/xml</stringProp>
               </elementProp>
@@ -111,7 +111,7 @@
           <boolProp name="recycle">true</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
           <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">iut_url,sch_url,revision</stringProp>
+          <stringProp name="variableNames">iut_file_name,sch_file_name,revision</stringProp>
         </CSVDataSet>
         <hashTree/>
       </hashTree>

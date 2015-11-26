@@ -38,15 +38,44 @@ while [ "$1" ]; do
   shift
 done 
 
+echo "--------------------------------------------------"
+echo ""
+##----------UserName --------------#
+if [ $user ];
+then
+	echo "Using UserName: " $user
+else 
+	echo "UserName was not provided, default 'ogctest' will be used."
+fi
+	
+##----------Password --------------#
+if [ $password ];
+then
+	echo "Using Password: " $password
+else 
+	echo "Password was not provided,default 'ogctest' will be used."
+fi
 
+##-------Folder of JMeter --------------#
 if [ ! $folder_of_jmeter ];
 then
-folder_of_jmeter=$dir
+	folder_of_jmeter=$dir
+	echo "Path of jmeter script was not provided then,'Current working Directory' will be used: '$folder_of_jmeter '" 
+else 
+	echo "Using path of jmeter script: " '$folder_of_jmeter'
 fi
+
+##------URL -----------------#
 if [ ! $url ];
 then
-url="http://cite.opengeospatial.org/te2/"
+	url="http://cite.opengeospatial.org/te2/"
+	echo "URL was not provided then default will be used: " $url
+else 
+	echo "URL is using: " $url
 fi
+##---------------------------#
+echo ""
+echo "--------------------------------------------------"
 i=0
 port=""
 testurl=$(echo $url | tr "/" "\n")
@@ -62,9 +91,25 @@ port=$2
 else
 host=$2
 fi
-rm index.html
-rm savedata
-rm -rf result
+
+if [ -f "index.html" ]
+then
+	rm index.html
+fi
+
+if [ -f "savedata" ]
+then
+	rm savedata
+fi
+
+if [ -d "result" ]
+then
+	rm -rf result
+fi
+#rm index.html
+#rm savedata
+#rm -rf result
+
 directory=`ls -F1 ${folder_of_jmeter} | grep /`
 now=$(date +"%Y/%m/%d  %H:%M:%S")
 echo "<b>TE integration testing - </b>$now" >> index1.html
@@ -96,7 +141,12 @@ fi
 for var in $directory
 do
 if [ "$var" != "REST_API/" ]; then
-rm $folder_of_jmeter/${var}savedata
+
+if [ -f "$folder_of_jmeter/${var}savedata" ]
+then
+	rm $folder_of_jmeter/${var}savedata
+fi
+
 jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
 result=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="checkResult" rc="\K.*?(?=")')
 formResult=$(cat $folder_of_jmeter/${var}savedata | grep -Po 'lb="formResult" rc="\K.*?(?=")')
@@ -133,7 +183,12 @@ echo "<BR />--------------- REST API Testing ----------- <BR />" >> index1.html
 rest_directory=`ls -F1 ${folder_of_jmeter}/REST_API | grep /`
 for rest_var in $rest_directory
 do
-rm $folder_of_jmeter/REST_API/${rest_var}savedata
+
+if [ -f "$folder_of_jmeter/REST_API/${rest_var}savedata" ]
+then
+	rm $folder_of_jmeter/REST_API/${rest_var}savedata
+fi
+
 jmeter -n -t $folder_of_jmeter/REST_API/${rest_var}test.jmx -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName
 
 rest_result=$(cat $folder_of_jmeter/REST_API/${rest_var}savedata | grep -Po 'lb="HTTP_Request" rc="\K.*?(?=")')
@@ -166,4 +221,8 @@ echo -n "" > result/FAIL
 fi
 index1=$(cat index1.html)
 echo $index1 >> index.html
-rm index1.html
+if [ -f "index1.html" ]
+then
+	rm index1.html
+fi
+
