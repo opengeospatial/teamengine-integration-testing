@@ -1,36 +1,21 @@
-# teamengine-integration-testing
-Code and instructions to test teamengine on the web, integrating some ETS and sample files <br/>
+# Introduction
+The repository contains code and instructions to test TEAM Engine with selected Executable Test Scripts and Reference Implementations and files.
 
 # Test Suites that can be tested
 
-- CSW 2.0.2
-- CAT 3.0
-- GML 3.2.1
-- SOS 1.0.0
+The following test suites can be tested again existing reference implementation or reference implementation files
+
+- CSW 2.0.2 (done)
+- CAT 3.0 
+- GML 3.2.1 (Partially)
+- SOS 1.0.0 (done)
 - WCS 2.0
 - WFS 1.0
 - WFS 1.1
 - WFS 2.0
 - WMS 1.1.1
-- WMS 1.3
+- WMS 1.3 (done)
 
-Reference Implementations here:
-https://github.com/opengeospatial/cite/wiki/Reference-Implementations
-
-
-* **Specified Key**<br/>
-
- - -f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:	path of jmeter script<br/>
- - -u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:	path of URL<br/>
- - -user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:	User name<br/>
- - -password&nbsp;:	User password<br/>
-
-# **EXAMPLE:**<br/>
-1. sh ./shellscript.sh  -user username -password paswordOfUser -f pathOfAllJmetersFile -u pathOfTeamengineURL
-   
-   e.g. sh ./shellscript.sh -user admin -password admin123 -u http://localhost:8080/teamengine/ -f ~/repo/teamengine-integration-testing/
- 
-* file.csv : This file contains the xml or sch file path and revision number which user wish to test.<br/>
 
 **Test Suites included in Integaration Testing:**
 
@@ -52,56 +37,33 @@ https://github.com/opengeospatial/cite/wiki/Reference-Implementations
 	- WFS 2.0
 	- WMS 1.1.1
 
-# **Note:**<br/>
-1.[Option -f :-  If you does not provide the path of jmeter script then it will take the default "Current Working Directroy (pwd)" path ]<br/>
-2.[If you are not providing the Username and password then it will take the default 'Username:ogctest', 'Password:ogctest' will be used] <br/>
-
-* **Before executing the Testing script please check the revision number of test suite which is currently present in teamengine.** 
-
-The default value is present in the CSV file, if you want to change the reference url and revision specified in the CSV files please use follwoing steps:
-
-* csw202:
-	In this we have to specify reference implementation URL and revision number which is present in teamengine.
-	First parameter is 'reference url',second 'revision (e.g. 1.15-SNAPSHOT)'. 
-
-* gml32:
-	In this we have to specify reference implementation URL and revision number which is present in teamengine.
-	First parameter is 'reference url',second 'revision (e.g. 1.22)'.
-
-* gml32-doc:
-	In this we have to specify the GML resource file name which should present in gml32-doc directory and revision number which is present in teamengine.
-	First parameter is 'GML resource file name',second 'revision (e.g. 1.22)'.
-
-* sos10:
-	In this we have to specify reference implementation URL and revision number which is present in teamengine. 
-	First parameter is 'reference url',second 'revision (e.g. 1.13)'.
-
-* wms13:
-	In this we have to specify reference implementation URL and revision number which is present in teamengine.
-	First parameter is 'reference url',second 'revision (e.g. 1.15-SNAPSHOT)'.
-
-* gml32-GET:
-	As similar to above.
-	First parameter is 'reference url',second 'revision (e.g. 1.12)'.
-
-* gml32-POST:
-	In this we have to specify the GML resource file name and schematron file name which should present in gml32-POST directory and revision number which is present in teamengine.
-	First parameter is 'GML resource file name',second schematron file name', third 'revision (e.g. 1.22)'.
+Reference Implementations are listed [here](https://github.com/opengeospatial/cite/wiki/Reference-Implementations)
 
 
-## Target platforms
+# Parameters
 
-### GNU/Linux
-* __OS__: ?
-* __JDK__: Oracle JDK 7u79
-* __Web container__: Apache Tomcat 7.0.6n
 
-### Windows
-* __OS__: ?
-* __JDK__: Oracle JDK 7u79
-* __Web container__: Apache Tomcat 7.0.6n
+- -f: path of the jmeter scripts folders. If not provided it will use the current working directory
+- -u: path of URL where TEAM Engine is installed
+- -user: User name.If not provided will use *ogctest*
+- -password:User password. If not provided will use *ogctest*
 
-### OS X
-* __OS__: ?
-* __JDK__: Oracle JDK 7u79
-* __Web container__: Apache Tomcat 7.0.6n
+
+
+
+
+# Example
+
+En example invocation of the script is as follows:
+
+	./shellscript.sh -user admin -password admin123 -u http://localhost:8080/teamengine/ -f ~/repo/teamengine-integration-testing/
+ 
+* file.csv : This file contains the xml or sch file path and revision number which user wish to test.<br/>
+
+# Configuration
+
+Under each folder (e.g. sos10 or gml32) there is a *file.csv*. These file is a csv file that contains the URL that will be tested and the version of the test. Except for:
+
+
+- gml32-POST: which you need to provide 3 arguments: GML resource file name, schematron file name and revision of the test. Both ML resource file and schematron file should be located under the gml32-POST directory
+
