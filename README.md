@@ -32,6 +32,25 @@ https://github.com/opengeospatial/cite/wiki/Reference-Implementations
  
 * file.csv : This file contains the xml or sch file path and revision number which user wish to test.<br/>
 
+**Test Suites included in Integaration Testing:**
+
+	- CSW 2.0.2
+	- GML 3.2.1:
+		- REST API via GET
+		- REST API via POST
+		- Web interface providing file URI (gml-uri)
+		-  Web interface uploading the GML document
+	- SOS 1.0.0
+	- WMS 1.3
+
+**Test Suite to implement:**
+
+	- CAT 3.0
+	- WCS 2.0
+	- WFS 1.0
+	- WFS 1.1
+	- WFS 2.0
+	- WMS 1.1.1
 
 # **Note:**<br/>
 1.[Option -f :-  If you does not provide the path of jmeter script then it will take the default "Current Working Directroy (pwd)" path ]<br/>
