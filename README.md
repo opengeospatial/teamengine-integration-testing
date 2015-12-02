@@ -20,10 +20,12 @@ Reference Implementations are listed [here](https://github.com/opengeospatial/ci
 
 # Parameters
 
+
 - -f: path of the jmeter scripts folders. If not provided it will use the current working directory
 - -u: path of URL where TEAM Engine is installed
 - -user: User name.If not provided will use *ogctest*
 - -password:User password. If not provided will use *ogctest*
+
 
 
 
@@ -39,6 +41,7 @@ En example invocation of the script is as follows:
 # Configuration
 
 Under each folder (e.g. sos10 or gml32) there is a *file.csv*. These file is a csv file that contains the URL that will be tested and the version of the test. Except for:
+
 
 - gml32-POST: which you need to provide 3 arguments: GML resource file name, schematron file name and revision of the test. Both ML resource file and schematron file should be located under the gml32-POST directory
 
