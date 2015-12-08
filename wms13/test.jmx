@@ -311,7 +311,7 @@
                 <elementProp name="Test" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Test</stringProp>
-                  <stringProp name="Argument.value">${revision}</stringProp>
+                  <stringProp name="Argument.value">${__P(wms13.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="description" elementType="HTTPArgument">
@@ -329,7 +329,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Web+Map+Service+%28WMS%29_1.3.0_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Web+Map+Service+%28WMS%29_1.3.0_${__P(wms13.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="suite" elementType="HTTPArgument">
@@ -406,7 +406,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Web%20Map%20Service%20(WMS)_1.3.0_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Web%20Map%20Service%20(WMS)_1.3.0_${__P(wms13.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -750,7 +750,7 @@
                 <elementProp name="capabilities-url" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">capabilities-url</stringProp>
-                  <stringProp name="Argument.value">${path}</stringProp>
+                  <stringProp name="Argument.value">${__P(wms13.path)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="updatesequence" elementType="HTTPArgument">
@@ -5197,16 +5197,9 @@
           <stringProp name="filename">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/savedata</stringProp>
         </ResultCollector>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">file.csv</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.all</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">path,revision</stringProp>
-        </CSVDataSet>
+        <com.tag.jmeter.ext.config.PropertyReader guiclass="TestBeanGUI" testclass="com.tag.jmeter.ext.config.PropertyReader" testname="Property File Reader" enabled="true">
+          <stringProp name="propFilePath">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/../test.properties</stringProp>
+        </com.tag.jmeter.ext.config.PropertyReader>
         <hashTree/>
       </hashTree>
     </hashTree>

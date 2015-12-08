@@ -51,7 +51,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="iut" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">${resource_url}</stringProp>
+                <stringProp name="Argument.value">${__P(gml32.resource_url)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">iut</stringProp>
@@ -64,7 +64,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol">${__P(server,http)}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${__P(warname,/te2/)}rest/suites/gml32/${revision}/run</stringProp>
+          <stringProp name="HTTPSampler.path">${__P(warname,/te2/)}rest/suites/gml32/${__P(gml32.revision)}/run</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -112,16 +112,9 @@
           <stringProp name="filename">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/savedata</stringProp>
         </ResultCollector>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">file.csv</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.all</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">resource_url,revision</stringProp>
-        </CSVDataSet>
+        <com.tag.jmeter.ext.config.PropertyReader guiclass="TestBeanGUI" testclass="com.tag.jmeter.ext.config.PropertyReader" testname="Property File Reader" enabled="true">
+          <stringProp name="propFilePath">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/../../test.properties</stringProp>
+        </com.tag.jmeter.ext.config.PropertyReader>
         <hashTree/>
       </hashTree>
     </hashTree>

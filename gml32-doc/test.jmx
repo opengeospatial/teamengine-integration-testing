@@ -316,7 +316,7 @@
                 <elementProp name="Test" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Test</stringProp>
-                  <stringProp name="Argument.value">${revision}</stringProp>
+                  <stringProp name="Argument.value">${__P(gml32.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -337,7 +337,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Geography+Markup+Language+%28GML%29_3.2.1_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Geography+Markup+Language+%28GML%29_3.2.1_${__P(gml32.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -416,7 +416,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Geography%20Markup%20Language%20(GML)_3.2.1_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Geography%20Markup%20Language%20(GML)_3.2.1_${__P(gml32.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -1140,8 +1140,8 @@
             <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
             <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
               <collectionProp name="HTTPFileArgs.files">
-                <elementProp name="${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${resourc_name}" elementType="HTTPFileArg">
-                  <stringProp name="File.path">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${resourc_name}</stringProp>
+                <elementProp name="${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${__P(gml32.doc_name)}" elementType="HTTPFileArg">
+                  <stringProp name="File.path">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/${__P(gml32.doc_name)}</stringProp>
                   <stringProp name="File.paramname">gml-doc</stringProp>
                   <stringProp name="File.mimetype">text/xml</stringProp>
                 </elementProp>
@@ -1548,16 +1548,9 @@
           <stringProp name="filename">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/savedata</stringProp>
         </ResultCollector>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">file.csv</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.all</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">resourc_name,revision</stringProp>
-        </CSVDataSet>
+        <com.tag.jmeter.ext.config.PropertyReader guiclass="TestBeanGUI" testclass="com.tag.jmeter.ext.config.PropertyReader" testname="Property File Reader" enabled="true">
+          <stringProp name="propFilePath">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/../test.properties</stringProp>
+        </com.tag.jmeter.ext.config.PropertyReader>
         <hashTree/>
       </hashTree>
     </hashTree>

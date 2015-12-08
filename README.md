@@ -16,29 +16,7 @@ The following test suites can be tested again existing reference implementation 
 - WMS 1.1.1
 - WMS 1.3 (done)
 
-
-**Test Suites included in Integaration Testing:**
-
-	- CSW 2.0.2
-	- GML 3.2.1:
-		- REST API via GET
-		- REST API via POST
-		- Web interface providing file URI (gml-uri)
-		-  Web interface uploading the GML document
-	- SOS 1.0.0
-	- WMS 1.3
-
-**Test Suite to implement:**
-
-	- CAT 3.0
-	- WCS 2.0
-	- WFS 1.0
-	- WFS 1.1
-	- WFS 2.0
-	- WMS 1.1.1
-
 Reference Implementations are listed [here](https://github.com/opengeospatial/cite/wiki/Reference-Implementations)
-
 
 # Parameters
 
@@ -58,12 +36,20 @@ En example invocation of the script is as follows:
 
 	./shellscript.sh -user admin -password admin123 -u http://localhost:8080/teamengine/ -f ~/repo/teamengine-integration-testing/
  
-* file.csv : This file contains the xml or sch file path and revision number which user wish to test.<br/>
+* test.properties : This file contains the xml or sch file path and revision number which user wish to test.<br/>
 
 # Configuration
 
-Under each folder (e.g. sos10 or gml32) there is a *file.csv*. These file is a csv file that contains the URL that will be tested and the version of the test. Except for:
+Under teamengine-integration-testing directory there is a *test.properties* file. These file is a properties file that contains the URL that will be tested and the version of the test. Except for:
 
 
-- gml32-POST: which you need to provide 3 arguments: GML resource file name, schematron file name and revision of the test. Both ML resource file and schematron file should be located under the gml32-POST directory
+- gml32-POST: which you need to provide 3 arguments: GML resource file name, schematron file name and revision of the test. Both GML resource file and schematron file should be located under the gml32-POST directory
 
+**Note-**
+
+- Before executing the this script we required the following plugins:
+
+	- Need to install xmllint .
+	- Import the "Property File Reader" extension into jmeter package.
+
+ 

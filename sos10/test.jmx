@@ -320,7 +320,7 @@
                 <elementProp name="Test" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Test</stringProp>
-                  <stringProp name="Argument.value">${revision}</stringProp>
+                  <stringProp name="Argument.value">${__P(sos10.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -341,7 +341,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Sensor+Observation+Service+%28SOS%29_1.0.0_1.13</stringProp>
+                  <stringProp name="Argument.value">OGC_Sensor+Observation+Service+%28SOS%29_1.0.0_${__P(sos10.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -558,7 +558,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Sensor%20Observation%20Service%20(SOS)_1.0.0_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Sensor%20Observation%20Service%20(SOS)_1.0.0_${__P(sos10.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -982,7 +982,7 @@
                 <elementProp name="service-url" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">service-url</stringProp>
-                  <stringProp name="Argument.value">${path}</stringProp>
+                  <stringProp name="Argument.value">${__P(sos10.path)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -1888,16 +1888,9 @@
           <stringProp name="filename">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/savedata</stringProp>
         </ResultCollector>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">file.csv</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.all</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">path,revision</stringProp>
-        </CSVDataSet>
+        <com.tag.jmeter.ext.config.PropertyReader guiclass="TestBeanGUI" testclass="com.tag.jmeter.ext.config.PropertyReader" testname="Property File Reader" enabled="true">
+          <stringProp name="propFilePath">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/../test.properties</stringProp>
+        </com.tag.jmeter.ext.config.PropertyReader>
         <hashTree/>
       </hashTree>
     </hashTree>

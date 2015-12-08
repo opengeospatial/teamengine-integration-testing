@@ -316,7 +316,7 @@
                 <elementProp name="Test" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Test</stringProp>
-                  <stringProp name="Argument.value">${revision}</stringProp>
+                  <stringProp name="Argument.value">${__P(csw.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -337,7 +337,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Catalogue+Service+-+Web+%28CSW%29_2.0.2_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Catalogue+Service+-+Web+%28CSW%29_2.0.2_${__P(csw.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -416,7 +416,7 @@
                 <elementProp name="sources" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">sources</stringProp>
-                  <stringProp name="Argument.value">OGC_Catalogue%20Service%20-%20Web%20(CSW)_2.0.2_${revision}</stringProp>
+                  <stringProp name="Argument.value">OGC_Catalogue%20Service%20-%20Web%20(CSW)_2.0.2_${__P(csw.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -704,7 +704,7 @@
                 <elementProp name="capabilities.url" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">capabilities.url</stringProp>
-                  <stringProp name="Argument.value">${path}</stringProp>
+                  <stringProp name="Argument.value">${__P(csw.path)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -1736,21 +1736,14 @@
           <stringProp name="filename">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/savedata</stringProp>
         </ResultCollector>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">file.csv</stringProp>
-          <boolProp name="quotedData">false</boolProp>
-          <boolProp name="recycle">true</boolProp>
-          <stringProp name="shareMode">shareMode.all</stringProp>
-          <boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">path,revision</stringProp>
-        </CSVDataSet>
-        <hashTree/>
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
         </CookieManager>
+        <hashTree/>
+        <com.tag.jmeter.ext.config.PropertyReader guiclass="TestBeanGUI" testclass="com.tag.jmeter.ext.config.PropertyReader" testname="Property File Reader" enabled="true">
+          <stringProp name="propFilePath">${__javaScript(org.apache.jmeter.services.FileServer.getFileServer().getBaseDir())}/../test.properties</stringProp>
+        </com.tag.jmeter.ext.config.PropertyReader>
         <hashTree/>
       </hashTree>
     </hashTree>
