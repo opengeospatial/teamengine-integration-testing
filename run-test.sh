@@ -164,6 +164,67 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -J
 		fi
 	#————————————————————————————————————————————————————#
 
+
+	#-----------------GET The Target Platform -----------------------------------------------#
+
+		echo "<BR/><b>Target Platform  :</b> <BR />" >> index1.html
+		echo "<BR /> &nbsp;&nbsp;&nbsp;&nbsp; <b> OS : </b> <BR />" >> index1.html
+		
+		#—————— GET Mac System info —————————
+		if echo $(cat /etc/os-release) | grep -iq "ubuntu";
+		then
+
+			os_version=$(cat /etc/os-release | grep "NAME\|VERSION" | head -2)
+			os_var=$(echo $os_version | awk -F" " '{print $1,$2,$3}')
+			set -- $os_var
+			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 <BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 $3  <BR />" >> index1.html
+
+		else
+
+			echo "Failed  to get system info..."
+
+		fi
+
+		#—————— GET Mac System info —————————
+		if echo $(sw_vers) | grep -iq "mac";
+		then
+			sw_vers >> data
+			iname=data
+  
+		while read line; do  
+		if [ -z "$line" ]; then
+    			echo "I saw an empty line ... will report this"
+		else    
+    			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $line <BR />"  >> index1.html
+		fi
+		done <"$iname"
+		rm data
+
+		else
+
+			echo "Failed  to get system info..."
+
+		fi
+
+		#———————————Get java version———————————————#
+
+		echo "<BR /> &nbsp;&nbsp;&nbsp;&nbsp; <b> JAVA : </b> <BR />" >> index1.html
+
+
+		(java -version 2>&1) >> temp
+
+		iname=temp  #Should be no space between = sign
+		while read line; do  
+		if [ -z "$line" ]; then
+    			echo "I saw an empty line ... will report this"
+		else    
+    			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $line <BR />"  >> index1.html
+		fi
+		done <"$iname"
+		rm temp
+
+        #------------------GET Target Paltform END--------------------------------------------------#
+
 	#——— Get the list of directory and execute the JMeter script ————————#
   
 	for var in $directory
