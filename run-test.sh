@@ -170,7 +170,7 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -J
 		echo "<BR/><b>Target Platform  :</b> <BR />" >> index1.html
 		echo "<BR /> &nbsp;&nbsp;&nbsp;&nbsp; <b> OS : </b> <BR />" >> index1.html
 		
-		#—————— GET Mac System info —————————
+		#—————— GET Ubuntu System info —————————
 		if echo $(cat /etc/os-release) | grep -iq "ubuntu";
 		then
 
@@ -253,10 +253,10 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser
 		#——————- Get the Revision Version from the savedata ——————-#
 
 		string=$(xmllint --xpath "//testResults/httpSample[@lb='formResult']/java.net.URL" $folder_of_jmeter/${var}savedata )
-		var=$(echo $string | awk -F"&amp;" '{print $1,$2,$3}')
-		set -- $var
-		var1=$(echo $3 | awk -F"_" '{print $1,$2,$3,$4}')
-		set -- $var1
+		split_string=$(echo $string | awk -F"&amp;" '{print $1,$2,$3}')
+		set -- $split_string
+		split_string1=$(echo $3 | awk -F"_" '{print $1,$2,$3,$4}')
+		set -- $split_string1
 		echo " $3 revision $4" >> index1.html
 		echo "<BR/><b>Test can be run  :</b> " >> index1.html
 		
@@ -280,6 +280,32 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser
 		else
 			echo "FAILED<BR/>">> index1.html
 			finalresult="FAIL"
+		fi
+		
+		#----------Check assertion for GML-test -----------------------
+
+		if echo $var | grep -q "gml" && [ "$var" != "gml32-doc/" ]; then
+		
+			assertion_status=$(xmllint --xpath "//testResults/httpSample/assertionResult/failure" $folder_of_jmeter/${var}savedata )
+			assertion_status1=$(echo $assertion_status | awk -v FS='(<failure>|</failure>)' '{print $2}')                
+			echo "Assertion TEST: " $assertion_status1
+			if echo $assertion_status | grep -q "false"; then
+				
+				echo "<b>Test completed as expected (FAILED) :</b> " >> index1.html 
+			else
+				if echo $assertion_status | grep -q "true"; then
+					echo "<b>Test completed as expected (PASSED) :</b> " >> index1.html
+				fi
+			fi
+
+			if echo $result | grep -q "200"; then
+ 
+				echo "SUCCESS<BR/>">> index1.html
+			else
+				echo "FAILED<BR/>">> index1.html
+				
+			fi
+		
 		fi
 	fi
 done
