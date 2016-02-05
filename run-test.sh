@@ -40,6 +40,11 @@ done
 
 echo "--------------------------------------------------"
 echo ""
+
+##-------Check jmeter is installed or not
+type jmeter >/dev/null 2>&1 || { echo >&2 "[Error] Jmeter not found.... \n apache-jmeter-2.13 needs to be installed in the system or under the users default directory. ";  exit 0; }
+
+
 		##----------UserName --------------#
 		if [ $user ];
 		then
@@ -122,7 +127,7 @@ echo "--------------------------------------------------"
 		echo "<b>TE integration testing - </b>$now" >> index1.html
 		echo "<BR/><b>URL :</b> $url<BR/>" >> index1.html
 
-sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
+jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
 
 	#————Get TE-VERSION ———————#
 	
@@ -171,6 +176,7 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -J
 		echo "<BR /> &nbsp;&nbsp;&nbsp;&nbsp; <b> OS : </b> <BR />" >> index1.html
 		
 		#—————— GET Ubuntu System info —————————
+	if hash cat /etc/os-release 2>/dev/null; then
 		if echo $(cat /etc/os-release) | grep -iq "ubuntu";
 		then
 
@@ -179,13 +185,10 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -J
 			set -- $os_var
 			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 <BR /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 $3  <BR />" >> index1.html
 
-		else
-
-			echo "Failed  to get system info..."
-
 		fi
-
+	fi	
 		#—————— GET Mac System info —————————
+	if hash sw_vers 2>/dev/null; then
 		if echo $(sw_vers) | grep -iq "mac";
 		then
 			sw_vers >> data
@@ -205,7 +208,7 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -J
 			echo "Failed  to get system info..."
 
 		fi
-
+	fi
 		#———————————Get java version———————————————#
 
 		echo "<BR /> &nbsp;&nbsp;&nbsp;&nbsp; <b> JAVA : </b> <BR />" >> index1.html
@@ -238,7 +241,9 @@ sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/teamenginePlan.jmx -J
 				rm $folder_of_jmeter/${var}savedata
 			fi
 
-sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
+
+
+jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName -Jurl=$url
 
 		result1=$(cat $folder_of_jmeter/${var}savedata | grep 'lb="checkResult"')
 		result=$(echo $result1 | cut -d " " -f6 )
@@ -327,7 +332,7 @@ done
 		fi
 
 
-sh ~/apache-jmeter-2.13/bin/jmeter -n -t $folder_of_jmeter/REST_API/${rest_var}test.jmx -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName
+jmeter -n -t $folder_of_jmeter/REST_API/${rest_var}test.jmx -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName
 
 		rest_result=$(cat $folder_of_jmeter/REST_API/${rest_var}savedata | grep 'lb="HTTP_Request"' | awk -v FS='(rc="|")' '{print $12}')
 
