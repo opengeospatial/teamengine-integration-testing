@@ -306,21 +306,7 @@
                 <elementProp name="Standard" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Standard</stringProp>
-                  <stringProp name="Argument.value">Sensor+Observation+Service+%28SOS%29</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="Version" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">Version</stringProp>
-                  <stringProp name="Argument.value">1.0.0</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="Test" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">Test</stringProp>
-                  <stringProp name="Argument.value">${__P(sos10.revision)}</stringProp>
+                  <stringProp name="Argument.value">OGC_Sensor+Observation+Service+%28SOS%29_1.0.0_${__P(sos10.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>

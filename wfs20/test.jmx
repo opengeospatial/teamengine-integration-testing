@@ -346,21 +346,7 @@
                 <elementProp name="Standard" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Standard</stringProp>
-                  <stringProp name="Argument.value">Web+Feature+Service+%28WFS%29</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="Version" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">Version</stringProp>
-                  <stringProp name="Argument.value">2.0</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="Test" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">Test</stringProp>
-                  <stringProp name="Argument.value">${__P(wfs.revision)}</stringProp>
+                  <stringProp name="Argument.value">OGC_Web+Feature+Service+%28WFS%29_2.0_${__P(wfs.revision)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
