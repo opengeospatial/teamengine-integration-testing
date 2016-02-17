@@ -1,0 +1,6 @@
+# teamengine integration config
+#/**/savedata
+index.html
+jmeter.log
+result/*
+*savedata
