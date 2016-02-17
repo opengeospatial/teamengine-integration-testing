@@ -289,7 +289,7 @@ jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password 
 		
 		#----------Check assertion for GML-test -----------------------
 
-		if echo $var | grep -q "gml" && [ "$var" != "gml32-doc/" ]; then
+		if echo $var | grep -q "gml" || echo $var | grep -q "kml" && [ "$var" != "gml32-doc/" ] ; then
 		
 			assertion_status=$(xmllint --xpath "//testResults/httpSample/assertionResult/failure" $folder_of_jmeter/${var}savedata )
 			assertion_status1=$(echo $assertion_status | awk -v FS='(<failure>|</failure>)' '{print $2}')                
