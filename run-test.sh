@@ -291,9 +291,8 @@ jmeter -n -t $folder_of_jmeter/${var}test.jmx -Juser=$user -Jpassword=$password 
 
 		if echo $var | grep -q "gml" || echo $var | grep -q "kml" && [ "$var" != "gml32-doc/" ] ; then
 		
-			assertion_status=$(xmllint --xpath "//testResults/httpSample/assertionResult/failure" $folder_of_jmeter/${var}savedata )
-			assertion_status1=$(echo $assertion_status | awk -v FS='(<failure>|</failure>)' '{print $2}')                
-			echo "Assertion TEST: " $assertion_status1
+			assertion_status=$(xmllint --xpath "//testResults/httpSample/assertionResult/failure/text()" $folder_of_jmeter/${var}savedata)
+			   
 			if echo $assertion_status | grep -q "false"; then
 				
 				echo "<b>Test completed as expected (FAILED) :</b> " >> index1.html 
@@ -331,6 +330,13 @@ done
 			rm $folder_of_jmeter/REST_API/${rest_var}savedata
 		fi
 
+		#———Check the ‘testresult’ file is exist ———#
+
+		if [ -f "$folder_of_jmeter/REST_API/${rest_var}testresult" ]
+		then
+			rm $folder_of_jmeter/REST_API/${rest_var}testresult
+		fi
+
 
 jmeter -n -t $folder_of_jmeter/REST_API/${rest_var}test.jmx -Jserver=$server -Jhost=$host -Jport=$port -Jwarname=$warName
 
@@ -349,6 +355,39 @@ jmeter -n -t $folder_of_jmeter/REST_API/${rest_var}test.jmx -Jserver=$server -Jh
 		else
 			echo "FAILED<BR/>">> index1.html
 			finalresult="FAIL"
+		fi
+		
+		if [ "$rest_var" = "gml32-POST/" ]; then
+		
+		#-------------Check expected result is failed or passed -------------------------
+		#tr -d "null" < $folder_of_jmeter/REST_API/${rest_var}testresult > $folder_of_jmeter/REST_API/${rest_var}testresults
+
+		#mv -bfv $folder_of_jmeter/REST_API/${rest_var}testresults $folder_of_jmeter/REST_API/${rest_var}testresult >/dev/null 2>&1
+		
+		sed -i '/null/d' $folder_of_jmeter/REST_API/${rest_var}testresult
+		gml32_post=$(xmllint --xpath "string(//test-method/@status)" $folder_of_jmeter/REST_API/${rest_var}testresult)
+	
+			echo "<b>Test completed as expected (FAIL) :</b> " >> index1.html 
+			if echo $gml32_post | grep -q "FAIL"; then
+				
+				echo "SUCCESS<BR/>">> index1.html
+			else
+				
+				echo "FAILED<BR/>">> index1.html
+				
+			fi
+		
+		#----------- Expected Result END -----------#		
+		
+		echo "<BR/><b>Following is the Result :</b> <BR/> <pre>" >> index1.html
+
+			while read line; do    
+		      		encodeData=$(echo "$line" | perl -MHTML::Entities -pe 'encode_entities($_)') 
+				echo "$encodeData<br/>" >> index1.html
+
+			done < $folder_of_jmeter/REST_API/${rest_var}testresult
+
+		echo "</pre>" >> index1.html
 		fi
 	done
 
