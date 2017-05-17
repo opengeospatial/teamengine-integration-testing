@@ -3,7 +3,7 @@ The repository contains code and instructions to test TEAM Engine with selected 
 
 # Goal
 - This script should run in a nightly basis against master branch of TE and all the tests.
-- The script can easily be run be providing a CSV file with the version of TE and tests to run. Fro example: https://github.com/opengeospatial/teamengine-builder/blob/master/beta-releases/201701.csv
+- The script can easily be run be providing a CSV file with the version of TE and tests to run. For example: https://github.com/opengeospatial/teamengine-builder/blob/master/beta-releases/201701.csv
 
 # Test Suites that can be tested
 
