@@ -1,6 +1,10 @@
 # Introduction
 The repository contains code and instructions to test TEAM Engine with selected Executable Test Scripts and Reference Implementations and files.
 
+# Goal
+- This script should run in a nightly basis against master branch of TE and all the tests.
+- The script can easily be run be providing a CSV file with the version of TE and tests to run.
+
 # Test Suites that can be tested
 
 The following test suites can be tested again existing reference implementation or reference implementation files
