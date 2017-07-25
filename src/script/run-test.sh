@@ -7,6 +7,7 @@ echo "-f		:	path of jmeter script"
 echo "-u		:	path of URL"
 echo "-user		:	User name"
 echo "-password	:	User password"
+echo "-i		:	Input CSV file"
 echo "---------"
 exit 0
 }
@@ -32,6 +33,10 @@ while [ "$1" ]; do
       ;;
       -password)
       password="$2"
+      shift
+      ;;
+      -i)
+      testpropties="$2"
       shift
       ;;
   esac
@@ -79,6 +84,18 @@ type jmeter >/dev/null 2>&1 || { echo >&2 "[Error] Jmeter not found.... \n apach
 			echo "URL is using: " $url
 		fi
 
+		##---------------------------#
+		
+		##------Input CSV file[testProperties] -----------------#
+		if [ -f "$testpropties" ];
+		then
+			echo "Modifying the test.properties using this file: " $testpropties
+                        
+			./property-converter.sh ${testpropties}
+		
+		else 
+			echo "CSV file is not provided, so existing 'test.properties' file will be used. "
+		fi
 		##---------------------------#
 echo ""
 echo "--------------------------------------------------"
