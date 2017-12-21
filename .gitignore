@@ -4,3 +4,7 @@ index.html
 jmeter.log
 result/*
 *savedata
+.project
+.settings/
+LICENSE
+target/
